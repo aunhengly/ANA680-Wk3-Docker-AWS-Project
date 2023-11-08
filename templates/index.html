@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wine Quality</title>
+    <style>
+      /* CSS for organizing the layout and styling the submit button */
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .column {
+        flex: 1;
+        padding: 10px;
+      }
+      .input-label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .input-field {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      .submit-button {
+        background-color: lightblue;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wine Quality Prediction:</h1>
+    <div class="container">
+      <div class="column">
+        <h2>Entries</h2>
+        <form action="{{ url_for('predict')}}" method="POST">
+          <label for="citric_acid"> citric_acid (Range: 0-1):</label>
+          <input
+            type="number"
+            name="citric_acid"
+            id="citric_acid"
+            min="0"
+            max="1"
+            step="0.01"
+            required
+          />
+          <br />
+
+          <label for="sulphates">sulphates (Range: 0.33-2):</label>
+          <input
+            type="number"
+            name="sulphates"
+            id="sulphates"
+            min="0.33"
+            max="2"
+            step="0.01"
+            required
+          />
+          <br />
+
+          <label for="alcohol">alcohol (8.4-14.9):</label>
+          <input
+            type="number"
+            name="alcohol"
+            id="alcohol"
+            min="8.4"
+            max="14.9"
+            required
+          />
+          <br />
+
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" id="clearButton">Clear</button>
+        </form>
+        <h3>Result from Prediction:</h3>
+        <br />
+        <label>3 = Group A </label><br />
+        <label>4 = Group B </label><br />
+        <label>5 = Group C </label><br />
+        <label>6 = Group D </label><br />
+        <label>7 = Group E </label><br />
+        <label>8 = Group F </label><br />
+      </div>
+
+      <div class="column">
+        <h2>Records of Predictions</h2>
+        <div id="resultContainer">
+          <ul id="predictionsList">
+            {% for entry in predictions %}
+            <li>{{ entry }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <script>
+      document
+        .getElementById("clearButton")
+        .addEventListener("click", function () {
+          document.querySelector("form").reset();
+          document.querySelector("#resultContainer").style.display = "none";
+          document.getElementById("predict").innerHTML = "";
+        });
+    </script>
+  </body>
+</html>
