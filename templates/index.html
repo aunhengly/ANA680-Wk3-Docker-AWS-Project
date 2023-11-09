@@ -43,7 +43,7 @@
       <div class="column">
         <h2>Entries</h2>
         <form action="{{ url_for('predict')}}" method="POST">
-          <label for="citric_acid"> citric_acid (Range: 0-1):</label>
+          <label for="citric_acid"> citric_acid (Range: 0 - 1):</label>
           <input
             type="number"
             name="citric_acid"
@@ -55,7 +55,7 @@
           />
           <br />
 
-          <label for="sulphates">sulphates (Range: 0.33-2):</label>
+          <label for="sulphates">sulphates (Range: 0.33 - 2.00):</label>
           <input
             type="number"
             name="sulphates"
@@ -67,13 +67,14 @@
           />
           <br />
 
-          <label for="alcohol">alcohol (8.4-14.9):</label>
+          <label for="alcohol">alcohol (Range: 8.4 - 14.9):</label>
           <input
             type="number"
             name="alcohol"
             id="alcohol"
             min="8.4"
-            max="14.9"
+            max="14.90"
+            step="0.01"
             required
           />
           <br />
@@ -81,14 +82,14 @@
           <button type="submit" class="submit-button">Submit</button>
           <button type="button" id="clearButton">Clear</button>
         </form>
-        <h3>Result from Prediction:</h3>
+        <h3>Result from Prediction for the Quality:</h3>
         <br />
-        <label>3 = Group A </label><br />
-        <label>4 = Group B </label><br />
-        <label>5 = Group C </label><br />
-        <label>6 = Group D </label><br />
-        <label>7 = Group E </label><br />
-        <label>8 = Group F </label><br />
+        <label>3 = Quality level 3 </label><br />
+        <label>4 = Quality level 4 </label><br />
+        <label>5 = Quality level 5 </label><br />
+        <label>6 = Quality level 6 </label><br />
+        <label>7 = Quality level 7 </label><br />
+        <label>8 = Quality level 8 </label><br />
       </div>
 
       <div class="column">
