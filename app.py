@@ -20,7 +20,7 @@ def predict():
     alcohol = request.form['alcohol']
     
     pred = model.predict(np.array([[citric_acid, sulphates, alcohol,]]))
-    result = f"Math Score: {citric_acid}, Reading Score: {sulphates}, Writing Score: {alcohol} => Prediction: {pred[0]}"
+    result = f"Citric Acid: {citric_acid}, Sulphates: {sulphates}, Alcohol: {alcohol} => Prediction: {pred[0]}"
     
     # Append the result to the list of predictions
     predictions.append(result)
